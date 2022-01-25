@@ -27,118 +27,247 @@ pwd
 
 -----
 
-/Users/eriq
+/Users/ellen
 
 
 #### Ex. 2:  Use echo to print `my name is xxxx` to stdout.  Where `xxxx` is 
 ####        replaced by your name
 
-echo "my name is Eric"
+echo "my name is Ellen"
 
 ------
 
-my name is Eric
+my name is Ellen
 
 
 
 #### Ex. 3:  Now, for real print your name, as in Ex. 2, but put your name in there:
 
+echo "my name is Ellen"
+
+------
+
+my name is Ellen
 
 
 #### Ex. 3: print the absolute path of the top level of the homework directory where this is
 
+pwd
+
+------
+
+/Users/ellen/Genetics_Lab_Data/EricBioInfClass2022/cons-genomics-homework-repo
 
 
 #### Ex. 4: list, in long format, all the files and directories in this homework directory
 
+ls -l
 
+------
+
+total 48
+-rw-r--r--   1 ellen  staff   495 Jan 25 10:20 README.md
+drwxr-xr-x   4 ellen  staff   128 Jan 25 10:20 bam
+-rw-r--r--   1 ellen  staff   205 Jan 25 10:20 cons-genomics-homework-repo.Rproj
+-rwxr-xr-x   1 ellen  staff    96 Jan 25 10:20 count_files.sh
+drwxr-xr-x  66 ellen  staff  2112 Jan 25 10:20 fastq
+drwxr-xr-x   3 ellen  staff    96 Jan 25 10:20 metadata
+drwxr-xr-x   4 ellen  staff   128 Jan 25 10:20 sam
+drwxr-xr-x   7 ellen  staff   224 Jan 25 10:20 silly
+-rw-r--r--   1 ellen  staff  9176 Jan 25 10:20 unix-intro-homework.sh
 
 #### Ex. 5: There is a directory called `.git` in here that didn't get listed. 
 ####        List everything again, but make sure `.git` is in the output
 
+ls -la
+
+------
+
+total 56
+drwxr-xr-x  14 ellen  staff   448 Jan 25 10:20 .
+drwxr-xr-x   5 ellen  staff   160 Jan 25 10:20 ..
+drwxr-xr-x   4 ellen  staff   128 Jan 25 10:20 .Rproj.user
+drwxr-xr-x  12 ellen  staff   384 Jan 25 10:49 .git
+-rw-r--r--   1 ellen  staff   140 Jan 25 10:20 .gitignore
+-rw-r--r--   1 ellen  staff   495 Jan 25 10:20 README.md
+drwxr-xr-x   4 ellen  staff   128 Jan 25 10:20 bam
+-rw-r--r--   1 ellen  staff   205 Jan 25 10:20 cons-genomics-homework-repo.Rproj
+-rwxr-xr-x   1 ellen  staff    96 Jan 25 10:20 count_files.sh
+drwxr-xr-x  66 ellen  staff  2112 Jan 25 10:20 fastq
+drwxr-xr-x   3 ellen  staff    96 Jan 25 10:20 metadata
+drwxr-xr-x   4 ellen  staff   128 Jan 25 10:20 sam
+drwxr-xr-x   7 ellen  staff   224 Jan 25 10:20 silly
+-rw-r--r--   1 ellen  staff  9176 Jan 25 10:20 unix-intro-homework.sh
 
 
 #### Ex. 6: What are the other hidden files/directories that show up
 ####        in the above listing? Just list them below (no special command)
 ####        to ge them, since you did that above)
 
-
+drwxr-xr-x  14 ellen  staff   448 Jan 25 10:20 .
+drwxr-xr-x   5 ellen  staff   160 Jan 25 10:20 ..
+drwxr-xr-x   4 ellen  staff   128 Jan 25 10:20 .Rproj.user
+drwxr-xr-x  12 ellen  staff   384 Jan 25 10:49 .git
+-rw-r--r--   1 ellen  staff   140 Jan 25 10:20 .gitignore
 
 #### Ex. 7: List (long format) the contents of the directory `.git`
 
+ls -l .git
 
+------
+
+total 56
+-rw-r--r--   1 ellen  staff    27 Jan 25 10:26 HEAD
+-rw-r--r--   1 ellen  staff   401 Jan 25 10:26 config
+-rw-r--r--   1 ellen  staff    73 Jan 25 10:20 description
+drwxr-xr-x  14 ellen  staff   448 Jan 25 10:20 hooks
+-rw-r--r--   1 ellen  staff  8222 Jan 25 10:26 index
+drwxr-xr-x   3 ellen  staff    96 Jan 25 10:20 info
+drwxr-xr-x   4 ellen  staff   128 Jan 25 10:20 logs
+drwxr-xr-x   4 ellen  staff   128 Jan 25 10:20 objects
+-rw-r--r--   1 ellen  staff   186 Jan 25 10:20 packed-refs
+drwxr-xr-x   5 ellen  staff   160 Jan 25 10:20 refs
 
 #### Ex. 8: If you wanted to type `ls fastq/DPCh_plate1_A06_S6.R1.fq.gz`
 ####        on the command line, what is the fewest keystrokes that can
 ####        get you `fastq/DPCh_plate1_A06_S6.R1.fq.gz` using TAB completion?
 
-
+12 keystrokes (ls f-Tab-Tab-A06-Tab-1-Tab)
 
 #### Ex. 9: Make a new directory called `lonely-fastqs`, and inside of that,
 ####        two directories R1 and R2.
 
-
+mkdir lonely-fastqs
+cd lonely-fastqs/
+mkdir R1
+mkdir R2
+cd ..
 
 #### Ex. 10: Copy (not move) all the read1 (`R1`) fastq files in `fastqs`
 ####         into `lonely-fastqs/R1` and all the read2 fastqs into 
 ####         `lonely-fastqs/R2`. When you are done, list the contents of 
 ####         `lonely-fastqs/R1` and `lonely-fastqs/R2`
 
+cp fastq/*R1.fq.gz lonely-fastqs/R1/
+cp fastq/*R2.fq.gz lonely-fastqs/R2/
 
+ls lonely-fastqs/R1
+
+------
+
+DPCh_plate1_A05_S5.R1.fq.gz     DPCh_plate1_C05_S29.R1.fq.gz    DPCh_plate1_E05_S53.R1.fq.gz    DPCh_plate1_G05_S77.R1.fq.gz
+DPCh_plate1_A06_S6.R1.fq.gz     DPCh_plate1_C06_S30.R1.fq.gz    DPCh_plate1_E06_S54.R1.fq.gz    DPCh_plate1_G06_S78.R1.fq.gz
+DPCh_plate1_A11_S11.R1.fq.gz    DPCh_plate1_C11_S35.R1.fq.gz    DPCh_plate1_E11_S59.R1.fq.gz    DPCh_plate1_G11_S83.R1.fq.gz
+DPCh_plate1_A12_S12.R1.fq.gz    DPCh_plate1_C12_S36.R1.fq.gz    DPCh_plate1_E12_S60.R1.fq.gz    DPCh_plate1_G12_S84.R1.fq.gz
+DPCh_plate1_B05_S17.R1.fq.gz    DPCh_plate1_D05_S41.R1.fq.gz    DPCh_plate1_F05_S65.R1.fq.gz    DPCh_plate1_H05_S89.R1.fq.gz
+DPCh_plate1_B06_S18.R1.fq.gz    DPCh_plate1_D06_S42.R1.fq.gz    DPCh_plate1_F06_S66.R1.fq.gz    DPCh_plate1_H06_S90.R1.fq.gz
+DPCh_plate1_B11_S23.R1.fq.gz    DPCh_plate1_D11_S47.R1.fq.gz    DPCh_plate1_F11_S71.R1.fq.gz    DPCh_plate1_H11_S95.R1.fq.gz
+DPCh_plate1_B12_S24.R1.fq.gz    DPCh_plate1_D12_S48.R1.fq.gz    DPCh_plate1_F12_S72.R1.fq.gz    DPCh_plate1_H12_S96.R1.fq.gz
+
+------
+
+ls lonely-fastqs/R2
+
+------
+
+DPCh_plate1_A05_S5.R2.fq.gz     DPCh_plate1_C05_S29.R2.fq.gz    DPCh_plate1_E05_S53.R2.fq.gz    DPCh_plate1_G05_S77.R2.fq.gz
+DPCh_plate1_A06_S6.R2.fq.gz     DPCh_plate1_C06_S30.R2.fq.gz    DPCh_plate1_E06_S54.R2.fq.gz    DPCh_plate1_G06_S78.R2.fq.gz
+DPCh_plate1_A11_S11.R2.fq.gz    DPCh_plate1_C11_S35.R2.fq.gz    DPCh_plate1_E11_S59.R2.fq.gz    DPCh_plate1_G11_S83.R2.fq.gz
+DPCh_plate1_A12_S12.R2.fq.gz    DPCh_plate1_C12_S36.R2.fq.gz    DPCh_plate1_E12_S60.R2.fq.gz    DPCh_plate1_G12_S84.R2.fq.gz
+DPCh_plate1_B05_S17.R2.fq.gz    DPCh_plate1_D05_S41.R2.fq.gz    DPCh_plate1_F05_S65.R2.fq.gz    DPCh_plate1_H05_S89.R2.fq.gz
+DPCh_plate1_B06_S18.R2.fq.gz    DPCh_plate1_D06_S42.R2.fq.gz    DPCh_plate1_F06_S66.R2.fq.gz    DPCh_plate1_H06_S90.R2.fq.gz
+DPCh_plate1_B11_S23.R2.fq.gz    DPCh_plate1_D11_S47.R2.fq.gz    DPCh_plate1_F11_S71.R2.fq.gz    DPCh_plate1_H11_S95.R2.fq.gz
+DPCh_plate1_B12_S24.R2.fq.gz    DPCh_plate1_D12_S48.R2.fq.gz    DPCh_plate1_F12_S72.R2.fq.gz    DPCh_plate1_H12_S96.R2.fq.gz
 
 #### Ex. 11: do a recursive, short listing of the contents of `lonely-fastqs`
 
+ls -R lonely-fastqs/
 
+------
+
+R1      R2
+
+lonely-fastqs//R1:
+DPCh_plate1_A05_S5.R1.fq.gz     DPCh_plate1_C05_S29.R1.fq.gz    DPCh_plate1_E05_S53.R1.fq.gz    DPCh_plate1_G05_S77.R1.fq.gz
+DPCh_plate1_A06_S6.R1.fq.gz     DPCh_plate1_C06_S30.R1.fq.gz    DPCh_plate1_E06_S54.R1.fq.gz    DPCh_plate1_G06_S78.R1.fq.gz
+DPCh_plate1_A11_S11.R1.fq.gz    DPCh_plate1_C11_S35.R1.fq.gz    DPCh_plate1_E11_S59.R1.fq.gz    DPCh_plate1_G11_S83.R1.fq.gz
+DPCh_plate1_A12_S12.R1.fq.gz    DPCh_plate1_C12_S36.R1.fq.gz    DPCh_plate1_E12_S60.R1.fq.gz    DPCh_plate1_G12_S84.R1.fq.gz
+DPCh_plate1_B05_S17.R1.fq.gz    DPCh_plate1_D05_S41.R1.fq.gz    DPCh_plate1_F05_S65.R1.fq.gz    DPCh_plate1_H05_S89.R1.fq.gz
+DPCh_plate1_B06_S18.R1.fq.gz    DPCh_plate1_D06_S42.R1.fq.gz    DPCh_plate1_F06_S66.R1.fq.gz    DPCh_plate1_H06_S90.R1.fq.gz
+DPCh_plate1_B11_S23.R1.fq.gz    DPCh_plate1_D11_S47.R1.fq.gz    DPCh_plate1_F11_S71.R1.fq.gz    DPCh_plate1_H11_S95.R1.fq.gz
+DPCh_plate1_B12_S24.R1.fq.gz    DPCh_plate1_D12_S48.R1.fq.gz    DPCh_plate1_F12_S72.R1.fq.gz    DPCh_plate1_H12_S96.R1.fq.gz
+
+lonely-fastqs//R2:
+DPCh_plate1_A05_S5.R2.fq.gz     DPCh_plate1_C05_S29.R2.fq.gz    DPCh_plate1_E05_S53.R2.fq.gz    DPCh_plate1_G05_S77.R2.fq.gz
+DPCh_plate1_A06_S6.R2.fq.gz     DPCh_plate1_C06_S30.R2.fq.gz    DPCh_plate1_E06_S54.R2.fq.gz    DPCh_plate1_G06_S78.R2.fq.gz
+DPCh_plate1_A11_S11.R2.fq.gz    DPCh_plate1_C11_S35.R2.fq.gz    DPCh_plate1_E11_S59.R2.fq.gz    DPCh_plate1_G11_S83.R2.fq.gz
+DPCh_plate1_A12_S12.R2.fq.gz    DPCh_plate1_C12_S36.R2.fq.gz    DPCh_plate1_E12_S60.R2.fq.gz    DPCh_plate1_G12_S84.R2.fq.gz
+DPCh_plate1_B05_S17.R2.fq.gz    DPCh_plate1_D05_S41.R2.fq.gz    DPCh_plate1_F05_S65.R2.fq.gz    DPCh_plate1_H05_S89.R2.fq.gz
+DPCh_plate1_B06_S18.R2.fq.gz    DPCh_plate1_D06_S42.R2.fq.gz    DPCh_plate1_F06_S66.R2.fq.gz    DPCh_plate1_H06_S90.R2.fq.gz
+DPCh_plate1_B11_S23.R2.fq.gz    DPCh_plate1_D11_S47.R2.fq.gz    DPCh_plate1_F11_S71.R2.fq.gz    DPCh_plate1_H11_S95.R2.fq.gz
+DPCh_plate1_B12_S24.R2.fq.gz    DPCh_plate1_D12_S48.R2.fq.gz    DPCh_plate1_F12_S72.R2.fq.gz    DPCh_plate1_H12_S96.R2.fq.gz
 
 #### Ex. 12: Use the recursive (-r) option to remove `lonely-fastqs`
 ####         and its contents
 
-
+rm -r lonely-fastqs/
 
 #### Ex. 13: Make two new directories in the top level of the
 ####         repo called `fq_AB` and `fq_notAB`
 
-
+mkdir fq_AB
+mkdir fq_notAB
 
 #### Ex. 14: Using the `[` `]` copy the R1 files in `fastqs` that
 ####         belong to sample names (the part immediately after `DPCh_plate1_`)
 ####         starting with an `A` or `B` to `fq_AB`.
 
-
+cp fastq/DPCh_plate1_[A-B]*.R1.fq.gz fq_AB
 
 #### Ex. 15: Now, using negation (`^`) with `[` and `]` copy all the
 ####         R1 files that don't belong to sample names starting with an
 ####         `A` or a `B` to `fq_notAB`. When you are done, on the next line in
 ####         the code block, list the contents of `fq_AB` and `fq_notAB`.
 
-
+cp fastq/DPCh_plate1_[^A-B]*.R1.fq.gz fq_notAB
 
 #### Ex. 16: Remove `fq_AB` and `fq_notAB`, and their contents
 
-
+rm -r fq_AB
+rm -r fq_notAB
 
 #### Ex. 17: Using the `{,}` construct create five directories named 
 ####         `dir_A`, `dir_C`, `dir_E`, `dir_G`, and `dir_I`, and list them
 ####         (but not their contents) when you are done. (Think `ls -d`).
 
+mkdir dir_{A,C,E,G,I}
 
+ls -d dir_*
+
+-------
+
+dir_A   dir_C   dir_E   dir_G   dir_I
 
 #### Ex. 18: Using globbing, remove `dir_A`, `dir_C`, `dir_E`, `dir_G`, and `dir_I`,
 ####         using a command with 8 characters (including spaces)
 
-
+rm -r d*
 
 #### Ex. 19: Create a directory called `nice_dir_name` and then use `echo`,
 ####         redirecting its output to create a file called `nice_file_name`
 ####         inside of `nice_dir_name` whose contents is the string
 ####         `A string in a file!`
 
-
+mkdir nice_dir_name
+echo 'A string in a file!' > nice_dir_name/nice_file_name
 
 #### Ex. 20: Catenate the contents of `nice_dir_name/nice_file_name` to _stdout_
 
+cat nice_dir_name/nice_file_name
 
+------
 
+A string in a file!
 
 #### Ex. 21: Create a directory called `bad directory name with spaces`, and then,
 ####         with redirection, create a file inside it, named 
