@@ -274,84 +274,146 @@ A string in a file!
 ####         `bad file name with spaces` whose contents are the string
 ####         `Whoa! No spaces, please!`. Use backslash escaping instead of quoting
 
-
+mkdir bad\ directory\ name\ with\ spaces
+echo 'Whoa! No spaces, please!' > bad\ directory\ name\ with\ spaces/bad\ file\ name\ with\ spaces
 
 
 #### Ex. 22: Catenate the contents of 
 ####         `bad directory name with spaces/bad file name with spaces` to stdout.
 
+cat bad\ directory\ name\ with\ spaces/bad\ file\ name\ with\ spaces
 
+------
+
+Whoa! No spaces, please!
 
 #### Ex. 23: List the directories (just the names, not the contents (`-d`)) of
 ####         `bad directory name with spaces` and `nice_dir_name`.
 
+ls -d bad\ directory\ name\ with\ spaces nice_dir_name
 
+------
+
+bad directory name with spaces  nice_dir_name
 
 #### Ex. 24: Once you are convinced that you can list the directories
 ####         correctly in your terminal, recall that `ls` command (i.e. get it back on the
 ####         command line using the up arrow on your keyboard) and replace `ls` with
 ####         `rm -r` to remove them. BE CAREFUL with the rm command!
 
-
+rm -r -d bad\ directory\ name\ with\ spaces nice_dir_name
 
 #### Ex. 25: Why is it a good idea to `ls` things before removing them?
 
-
+You want to make sure you are deleting the things you want to delete before you
+remove them.
 
 #### Ex. 26: If you had just typed `rm -r bad directory name with spaces` 
 ####         what would Unix have tried to remove? (No command to type here,
 ####         just answer the question).
 
-
+It would have tried to remove 5 folders named bad, directory, name, with, and spaces.
 
 #### Ex. 27: There are bam, sam, and fastq files, in the appropriately
 ####         named directories for sample `A05_S5`. Make a directory named `A05_S5`
 ####         and copy all those files into that new directory. List the directory
 ####         when you are done.
 
+mkdir A05_S5
+cp {sam,fastq,bam}/*A05_S5* A05_S5
+ls A05_S5
 
+------
+
+DPCh_plate1_A05_S5.R1.fq.gz     DPCh_plate1_A05_S5.R2.fq.gz     DPCh_plate1_A05_S5.bam          DPCh_plate1_A05_S5.sam
 
 #### Ex. 28: remove the directory `A05_S5` and its contents
 
-
+rm -r A05_S5
 
 #### Ex. 29: Use `ls` to try to list the file `it_aint_here`
 
+ls it_aint_here
 
+------
+
+ls: it_aint_here: No such file or directory
 
 #### Ex. 30: Now, do the same thing but redirect _stderr_ into a file called 
 ####         `my_bad.txt`, and then catenate the contents of that file, and then remove it
 
+ls it_aint_here 2> my_bad.txt
+cat my_bad.txt 
 
+------
 
+ls: it_aint_here: No such file or directory
+
+------
+
+rm my_bad.txt
 
 #### Ex. 31: The files in `fastq` are text files, but they are all gzipped.
 ####         Using `gzcat` and a pipe, view the first 8 lines of 
 ####         `fastq/DPCh_plate1_C11_S35.R1.fq.gz`
 
 
+gzcat fastq/DPCh_plate1_C11_S35.R1.fq.gz | head -8
 
+------
+
+@K00364:64:HTYYCBBXX:1:1101:1824:48192/1
+GTAGAATAATAGTGAATCAAATCAAATGTTATTTGTCACATGCGCTGAATACAACAGGTGTGGACCTTACAGTGAAATGCTTCCTTACAAGCCCTTAACCAACAATGCAGTTTTAAGAAAAATGAGTGTGAGATAAGTAAAAAATAGAAAA
++
+AAFFFJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJFJJJJJJJJJJJAJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJFJJJJJJJJJJJJ7JJJJJJFFFFJJJJJJ7A7AJJAFAJJJJJFJJJJ-<JFJ-FFFJJJ
+@K00364:64:HTYYCBBXX:1:1101:2869:22080/1
+TTAAAACACGGTATGATGCAAGCAGCACAACACATCAATAACAAAAATACAAGAATTAGGGTCAGAAATCCAGTAACCACCATACTAGTGTACTTACCAAACCAGGCTCCCAACCAAGAGAACAGTCCAGACTCCTCCACCCTCGCCATGG
++
+-AAFFJJJJJJJJJJJJFFJJJFJFJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJFFJJJ<JJJJJJFFFFJFFJJJJJJAFJJJJJJJJJJJJJJJJJJFAJJJJJJJJJJJJJJJJJJJFJJJFAJJJJJJJFJJJJJJJJFFJJ
 
 #### Ex. 32: Do the same to see the first 8 lines of `fastq/DPCh_plate1_C11_S35.R2.fq.gz`
 
+gzcat fastq/DPCh_plate1_C11_S35.R2.fq.gz | head -8
 
+------
 
+@K00364:64:HTYYCBBXX:1:1101:1824:48192/2
+CACAAGGAACGACAGAGGGTAGTGCGTACGGCCCAGCACATCACTGGGACCAAGCATCCTGCAATCCAGGACCTCCATACCAGGCGGTGTCAGAGGAAGGCCCTAAAATTGTCAAAGACTCCAGCCACCCTAGTCATTAACTCTTCGCTCT
++
+A<-A-<-F<AJ-<---<<--<-<-7FFJ-77A<-<--7-<7-<-7<J<77A<--7-AAA7-AF-7FAF<-<FJ---7-77FJA7-77F7FFJ7F<--<--77)A7FA-A7-<---7<<F7-<-7<))7--)<)7<AF----7<<<<-)-7)
+@K00364:64:HTYYCBBXX:1:1101:2869:22080/2
+CTATGATCAACAGCGTTTTGTGATTTACCCCCGTGATGCACTCACTGGTATGTCTGAACAGCTTGAGGCCACATCTAGGGTTGCCAGACAGAATAGACTTGCTTTGGATATGCTTCTTGCCAGTCAGGGGGGTGTCTGTAAGATGTTCGGT
++
+AAAFAFJJJJJJJJJJ-FJJJJJJFJJJJFJJJJJJJJJJJJJFJFFJFFFFFFJFFJJJFJFAAA777AAJJJAA--A<-A<-JJA-<JFJJJ-7<-AAJJFJJJ<JJ<JAFFFF---7<<7777<)7<<-<777-<-7--<FJJ<F-<<
 
 #### Ex. 33: What do you notice about the names of the two reads in each 
 ####         file (Lines 1 and 5, that start with a `@`)
 
-
-
+They're the same except for the last two characters--R1 ends withh "/1" and R2
+ends with "/2"
 
 #### Ex. 34: Print the date, redirect it to a file called `now.txt`,
 ####         catenate that file to _stdout_ and then remove it
 
+date > now.txt
+cat now.txt
 
+------
+Thu Jan 27 15:21:49 PST 2022
+------
+
+rm now.txt
 
 #### Ex. 35: Count the number of lines/words/characters (using `wc`)
 ####         in the two SAM files in the `sam` directory
 
+wc sam/*.sam
 
+------
+
+14219   45092  511203 sam/DPCh_plate1_A05_S5.sam
+14150   43985  479977 sam/DPCh_plate1_A06_S6.sam
+28369   89077  991180 total
 
 #### Ex. 36: Note that gzcat will decompress all files you give itand send the 
 ####         output to _stdout_. Knowing this, count how many lines are in all 
